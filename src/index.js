@@ -15,7 +15,7 @@ CustomErrorReporter.propTypes = {
 
 const SpectacleOverride = createGlobalStyle`
   .spectacle-content {
-    max-height: none !important;
+    height: 85%;
     max-width: 75% !important;
   }
 `;

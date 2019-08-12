@@ -3,29 +3,19 @@ import React from "react";
 import styled from "styled-components";
 
 // Import Spectacle Core tags
-import {
-  Deck,
-  Heading,
-  Slide,
-  Text as BaseText,
-  Image,
-  List as BaseList,
-  ListItem as BaseListItem,
-  Appear,
-  Code
-} from "spectacle";
+import { Deck, Heading, Text, Image, List, ListItem, Appear } from "spectacle";
 
 import Layout from "./components/layout";
+import Slide from "./components/slide";
+import Social from "./components/social";
+import Formidable from "./components/formidable";
+import OSS from "./components/oss";
 
-import Twitter from "./static/Twitter_Logo_Blue.svg";
-import GitHub from "./static/GitHub-Mark-120px-plus.png";
 import Topo from "./static/topography.svg";
 import TopoTwo from "./static/topographytwo.svg";
 import ReasonLogo from "./static/reason.png";
 import ReactLogo from "./static/react.svg";
 import ParkieDoo from "./static/ziegler_parker_portrait_3.jpg";
-import FormidableLogo from "./static/formidable_logo.svg";
-import FormidableText from "./static/formidable_text.svg";
 import UrqlLogo from "./static/urql_logo.png";
 import SpectacleLogo from "./static/spectacle_logo.svg";
 import VictoryLogo from "./static/victory_logo.png";
@@ -46,244 +36,54 @@ import ReasonHooksExample from "./static/reason_hooks_example.svg";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
+import StrangeLoop from "./components/strangeloop";
+import Profile from "./components/profile";
 
 // Require CSS
 require("normalize.css");
 
 const theme = createTheme(
   {
-    primary: "white",
-    secondary: "#1F2022",
-    tertiary: "#03A9FC",
-    quaternary: "#CECECE"
+    primary: "white"
   },
   {
-    primary: "Roboto Mono",
+    primary: {
+      name: "Fira Code",
+      googleFont: true
+    },
     secondary: "monospace"
   }
 );
 
-const List = styled(BaseList)`
-  width: 80%;
-`;
-
-const ListItem = styled(BaseListItem)`
-  font-size: 3rem !important;
-  margin: 1rem;
-`;
-
-const Text = styled(BaseText)`
-  text-align: left;
-`;
-
-const OSSGrid = styled.div`
-  display: grid;
-  grid-template-areas:
-    "spectacle victory"
-    "urql urql";
-  grid-gap: 2.5rem 5rem;
-
-  .spectacle {
-    grid-area: spectacle;
-  }
-
-  .urql {
-    grid-area: urql;
-  }
-
-  .victory {
-    grid-area: victory;
-  }
-`;
-
-const InferenceGrid = styled.div`
-  display: grid;
-  grid-template-areas:
-    "typescript reason"
-    "point point";
-  grid-gap: 1rem;
-
-  img {
-    height: 500px;
-  }
-
-  .typescript {
-    grid-area: typescript;
-  }
-
-  .reason {
-    grid-area: reason;
-  }
-
-  .point {
-    grid-area: point;
-  }
-`;
-
-const HooksGrid = styled.div`
-  display: grid;
-  grid-template-areas:
-    "nonArity arity"
-    "state effect"
-    "reducer callback"
-    "_ memo"
-    "_ layoutEffect"
-    "_ imperativeHandle";
-  grid-gap: 1rem;
-
-  .nonArity {
-    grid-area: nonArity;
-  }
-
-  .arity {
-    grid-area: arity;
-  }
-
-  .state {
-    grid-area: state;
-  }
-
-  .reducer {
-    grid-area: reducer;
-  }
-
-  .effect {
-    grid-area: effect;
-  }
-
-  .callback {
-    grid-area: callback;
-  }
-
-  .memo {
-    grid-area: memo;
-  }
-
-  .layoutEffect {
-    grid-area: layoutEffect;
-  }
-
-  .imperativeHandle {
-    grid-area: imperativeHandle;
-  }
-`;
+console.log("theme", theme.screen.colors.secondary);
 
 const Presentation = () => {
   return (
     <Deck theme={theme}>
-      <Slide bgImage={Topo}>
-        <Layout direction="column" hex="#ff9c0d">
-          <Heading size={2}>Reason(ML)able React</Heading>
-          <div style={{ display: "flex", alignItems: "center", marginTop: 40 }}>
-            <Image
-              height={100}
-              width={100}
-              src={ReasonLogo}
-              style={{ margin: 10 }}
-            />
-            <Text>+</Text>
-            <Image
-              height={100}
-              width={100}
-              src={ReactLogo}
-              style={{ margin: 10 }}
-            />
-            <Text>
-              <span role="img" aria-label="Reason + React = Love">
-                = 💖
-              </span>
-            </Text>
-          </div>
+      <Slide>
+        <Layout style={{ justifyContent: "space-evenly" }}>
+          <Heading size={4}>Towards an Open, Reason(ML)able Web</Heading>
+          <StrangeLoop />
         </Layout>
       </Slide>
-      <Slide bgImage={Topo}>
-        <Layout hex="#ff9c0d" direction="column">
-          <Heading size={4}>Before I begin...</Heading>
-          <Image
-            src="https://media.giphy.com/media/lffThFKTbC0hpf4KfP/giphy.gif"
-            style={{ borderRadius: "1rem", margin: "3rem", height: 400 }}
-          />
+      <Slide>
+        <Layout style={{ justifyContent: "space-evenly" }}>
+          <Profile src={ParkieDoo} />
+          <Heading size={6}>Software Engineer at Formidable</Heading>
+          <Social />
         </Layout>
       </Slide>
-      <Slide bgImage={Topo}>
-        <Layout direction="column" hex="#ff9c0d">
-          <div
-            style={{
-              height: 300,
-              width: 300,
-              borderRadius: "50%",
-              overflow: "hidden",
-              marginBottom: 40
-            }}
-          >
-            <Image
-              src={ParkieDoo}
-              style={{
-                height: "100%",
-                width: "auto",
-                display: "block",
-                margin: 0,
-                objectFit: "cover"
-              }}
-            />
-          </div>
-          <Heading size={4}>Software Engineer at Formidable</Heading>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-              width: "100%",
-              marginTop: 50
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Image src={Twitter} height={50} width={50} />
-              <Text style={{ fontSize: "2rem" }}>@parker_ziegler</Text>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Image
-                src={GitHub}
-                height={40}
-                width={40}
-                style={{ marginRight: 10 }}
-              />
-              <Text style={{ fontSize: "2rem" }}>parkerziegler</Text>
-            </div>
-          </div>
+      <Slide>
+        <Layout>
+          <Formidable />
         </Layout>
       </Slide>
-      <Slide bgImage={Topo}>
-        <Layout hex="#ff9c0d">
-          <Image
-            src={FormidableLogo}
-            height={300}
-            style={{ margin: "0.5rem" }}
-          />
-          <Image
-            src={FormidableText}
-            height={150}
-            style={{ margin: "0.5rem" }}
-          />
+      <Slide>
+        <Layout>
+          <OSS />
         </Layout>
       </Slide>
-      <Slide bgImage={Topo}>
-        <Layout hex="#ff9c0d">
-          <Heading size={4}>Open Source</Heading>
-          <OSSGrid>
-            <Appear>
-              <Image src={SpectacleLogo} className="spectacle" height={350} />
-            </Appear>
-            <Appear>
-              <Image src={VictoryLogo} className="victory" height={350} />
-            </Appear>
-            <Appear>
-              <Image src={UrqlLogo} className="urql" height={350} />
-            </Appear>
-          </OSSGrid>
-        </Layout>
-      </Slide>
-      <Slide bgImage={Topo}>
+      {/* <Slide bgImage={Topo}>
         <Layout direction="column" hex="#ff9c0d">
           <div
             style={{
@@ -398,10 +198,9 @@ const Presentation = () => {
           <Heading size={4} style={{ marginBottom: "2rem" }}>
             <em>Kind of</em>
           </Heading>
-          {/* <Image
-            src="https://media.giphy.com/media/BMtGb8JSk2Ln1cnPMA/giphy.gif"
-            style={{ borderRadius: "1rem" }}
-          /> */}
+          Image src="https://media.giphy.com/media/BMtGb8JSk2Ln1cnPMA/giphy.gif"
+          style={{ borderRadius: "1rem" }}
+          />
         </Layout>
       </Slide>
       <Slide bgImage={Topo}>
@@ -481,188 +280,8 @@ const Presentation = () => {
         <Layout direction="column" hex="#ff9c0d">
           <Image src={ReOCamlBS} />
         </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Heading size={3}>So what's this got to do with React?</Heading>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Image
-            src={ReasonReact}
-            width="90%"
-            style={{ borderRadius: "1rem" }}
-          />
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Image src={ReasonExample} style={{ borderRadius: "1rem" }} />
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Image src={TypeScriptExample} style={{ borderRadius: "1rem" }} />
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb" direction="column">
-          <Heading size={4}>Benefits</Heading>
-          <List style={{ width: "80%" }}>
-            <Appear>
-              <ListItem>Terser syntax.</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>100% type safety without writing types.</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Millisecond-level feedback.</ListItem>
-            </Appear>
-          </List>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Image
-            src={ReasonPerf}
-            width="75%"
-            style={{ borderRadius: "1rem" }}
-          />
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Heading size={3}>
-            So what about hooks?{" "}
-            <span aria-label="Hooks" role="img">
-              🎣
-            </span>
-          </Heading>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Heading size={3}>
-            Heck yes it does{" "}
-            <span aria-label="Heck Yes" role="img">
-              🥳
-            </span>
-          </Heading>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb" direction="column">
-          <Heading size={5} style={{ marginBottom: "3rem" }}>
-            Support for all hooks with defined <em>arities</em> for dependency
-            arrays.
-          </Heading>
-          <HooksGrid>
-            <span className="nonArity">
-              <b>No dependency array</b>
-            </span>
-            <span className="arity">
-              <b>Dependency array</b>
-            </span>
-            <code className="state">useState</code>
-            <code className="reducer">useReducer</code>
-            <code className="effect">useEffect(n)</code>
-            <code className="callback">useCallback(n)</code>
-            <code className="memo">useMemo(n)</code>
-            <code className="layoutEffect">useLayoutEffect(n)</code>
-            <code className="imperativeHandle">useImperativeHandle(n)</code>
-          </HooksGrid>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb">
-          <Image src={ReasonHooksExample} style={{ borderRadius: "1rem" }} />
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb" direction="column">
-          <Heading size={4} style={{ width: "80%" }}>
-            This looks pretty much like Hooks in JS!
-          </Heading>
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb" direction="column">
-          <Heading size={4} style={{ marginBottom: "2rem" }}>
-            Alright, let's wrap it up.
-          </Heading>
-          {/* <Image
-            src="https://media.giphy.com/media/1XdfVRTyn5d31Q1lG0/giphy.gif"
-            style={{ borderRadius: "1rem" }}
-          /> */}
-        </Layout>
-      </Slide>
-      <Slide bgImage={TopoTwo}>
-        <Layout hex="#61dafb" direction="column">
-          <List>
-            <ListItem>Give Reason and ReasonReact A Try!</ListItem>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginLeft: "5rem"
-              }}
-            >
-              <span>
-                <code>reasonml.github.io</code>
-              </span>
-              <span>
-                <code>reasonml.github.io/reason-react</code>
-              </span>
-            </div>
-            <Appear>
-              <ListItem>Sound Type Systems Are Good For You</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                It's 2019 – Write Your React in Reason You Cowards!
-              </ListItem>
-            </Appear>
-          </List>
-        </Layout>
-      </Slide>
-      <Slide bgImage={Topo}>
-        <Layout direction="column" hex="#ff9c0d">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span
-              role="img"
-              aria-label="Thanks"
-              style={{ fontSize: "3rem", marginRight: "3rem" }}
-            >
-              💖
-            </span>
-            <Heading size={4}>Thank You</Heading>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-              width: "100%",
-              marginTop: 50
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Image src={Twitter} height={50} width={50} />
-              <Text style={{ fontSize: "2rem" }}>@parker_ziegler</Text>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Image
-                src={GitHub}
-                height={40}
-                width={40}
-                style={{ marginRight: 10 }}
-              />
-              <Text style={{ fontSize: "2rem" }}>parkerziegler</Text>
-            </div>
-          </div>
-        </Layout>
-      </Slide>
+      </Slide>{" "}
+      */}
     </Deck>
   );
 };
