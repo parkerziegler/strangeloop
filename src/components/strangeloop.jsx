@@ -1,23 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import { Image } from "spectacle";
+
+import StrangeLoopLogo from "../static/strangeloop.jpg";
 
 import Flex from "./flex";
 
-const StrangeLoopLogo = styled.span`
-  span {
-    color: #d0e9ae;
-    letter-spacing: -0.15em;
-    margin-right: 0.1em;
-  }
-`;
-
 const StrangeLoop = () => (
-  <Flex.FlexHorizontalBetween style={{ width: "100%" }}>
-    <StrangeLoopLogo>
-      Strange L<span>oo</span>P
-    </StrangeLoopLogo>
+  <Flex.FlexHorizontalEvenly style={{ width: "100%" }}>
+    <Image src={StrangeLoopLogo} height={100} style={{ margin: 0 }} />
     <span>September 13, 2019</span>
-  </Flex.FlexHorizontalBetween>
+  </Flex.FlexHorizontalEvenly>
 );
 
 export default StrangeLoop;

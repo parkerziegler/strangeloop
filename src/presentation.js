@@ -3,19 +3,35 @@ import React from "react";
 import styled from "styled-components";
 
 // Import Spectacle Core tags
-import { Deck, Heading, Text, Image, List, ListItem, Appear } from "spectacle";
+import {
+  Deck,
+  Heading,
+  Text,
+  Image,
+  List,
+  Appear,
+  Slide as BaseSlide
+} from "spectacle";
 
 import Layout from "./components/layout";
 import Slide from "./components/slide";
 import Social from "./components/social";
 import Formidable from "./components/formidable";
 import OSS from "./components/oss";
+import ListItem from "./components/listItem";
+import Code from "./components/code";
 
 import Topo from "./static/topography.svg";
 import TopoTwo from "./static/topographytwo.svg";
 import ReasonLogo from "./static/reason.png";
 import ReactLogo from "./static/react.svg";
 import ParkieDoo from "./static/ziegler_parker_portrait_3.jpg";
+import Formidagathering from "./static/formidagathering.jpg";
+import ReasonErrorHandling from "./static/reason_error_handling.png";
+import FormidableLocales from "./static/formidable_locales.png";
+import TypeScriptLogo from "./static/typescript_logo.png";
+import StateOfJS2017 from "./static/state_of_js_2017.png";
+import Thonkilicious from "./static/thonkilicious.gif";
 import UrqlLogo from "./static/urql_logo.png";
 import SpectacleLogo from "./static/spectacle_logo.svg";
 import VictoryLogo from "./static/victory_logo.png";
@@ -55,8 +71,6 @@ const theme = createTheme(
   }
 );
 
-console.log("theme", theme.screen.colors.secondary);
-
 const Presentation = () => {
   return (
     <Deck theme={theme}>
@@ -81,6 +95,88 @@ const Presentation = () => {
       <Slide>
         <Layout>
           <OSS />
+        </Layout>
+      </Slide>
+      <Slide>
+        <Layout>
+          <Image src={FormidableLocales} style={{ borderRadius: 10 }} />
+        </Layout>
+      </Slide>
+      <BaseSlide bgImage={Topo}>
+        <Layout>
+          <List>
+            <ListItem>Where is the web going in the next year?</ListItem>
+            <Appear>
+              <ListItem>What about in the next five?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                How do we want to be involved in that transformation?
+              </ListItem>
+            </Appear>
+          </List>
+        </Layout>
+      </BaseSlide>
+      {/* <Slide>
+        <Layout>
+          <Image
+            src={Formidagathering}
+            height={600}
+            style={{ borderRadius: 10 }}
+          />
+        </Layout>
+      </Slide> */}
+      <Slide>
+        <Layout>
+          <Heading size={2}>Early 2018</Heading>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Layout>
+          <Heading size={4}>Static Typing</Heading>
+          <Image src={TypeScriptLogo} height={175} style={{ margin: 20 }} />
+          <Text>was eating the world.</Text>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Layout>
+          <Image src={StateOfJS2017} style={{ borderRadius: 10 }} />
+        </Layout>
+      </Slide>
+      <BaseSlide bgImage={Topo}>
+        <Layout>
+          <Image src={Thonkilicious} height={75} />
+          <List>
+            <ListItem>Type inference was terrible.</ListItem>
+            <Appear>
+              <ListItem>
+                <Code>typings</Code> !== <Code>@types</Code>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                "<Code>AnyScript</Code>"
+              </ListItem>
+            </Appear>
+          </List>
+        </Layout>
+      </BaseSlide>
+      <Slide>
+        <Layout>
+          <Heading size={4}>
+            Nevertheless, I had seen the light.{" "}
+            <span role="img" aria-labelledby="Light">
+              💡
+            </span>
+          </Heading>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Layout>
+          <Image
+            src={ReasonErrorHandling}
+            style={{ borderRadius: 10, height: "75%" }}
+          />
         </Layout>
       </Slide>
       {/* <Slide bgImage={Topo}>
