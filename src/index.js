@@ -20,10 +20,20 @@ const SpectacleOverride = createGlobalStyle`
   }
 `;
 
+const SpectacleCodeSlideOverride = createGlobalStyle`
+  .spectacle-slide {
+    h1 {
+      font-size: 2.5rem !important;
+      color: black !important;
+    }
+  }
+`;
+
 ReactDOM.render(
   <AppContainer errorReporter={CustomErrorReporter}>
     <>
       <SpectacleOverride />
+      <SpectacleCodeSlideOverride />
       <Presentation />
     </>
   </AppContainer>,

@@ -1,0 +1,8 @@
+let id = x => x;
+/* 'a => 'a */
+
+let idChar = id('a');
+/* char */
+
+let idInt = id(1);
+/* int */

@@ -1,0 +1,8 @@
+const id = (x) => x;
+/* any => any */
+
+const idStr = id('a');
+/* any */
+
+const idInt = id(1);
+/* any */
