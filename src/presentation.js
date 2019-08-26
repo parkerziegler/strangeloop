@@ -12,7 +12,6 @@ import {
   Slide as BaseSlide
 } from "spectacle";
 import CodeSlide from "spectacle-code-slide";
-import "prismjs/components/prism-markup-templating";
 
 import Layout from "./components/layout";
 import Slide from "./components/slide";
@@ -66,8 +65,10 @@ import Profile from "./components/profile";
 require("normalize.css");
 
 // Import code samples
+require("prismjs");
 require("prismjs/components/prism-typescript");
 require("prismjs/components/prism-reason");
+require("prismjs/components/prism-markup-templating");
 const Collatz = require("./code/collatz.example");
 const CollatzCompiled = require("./code/collatz_compiled.example");
 const TypeScriptInference = require("./code/typescript_inference.example");
