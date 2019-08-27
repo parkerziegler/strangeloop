@@ -9,7 +9,9 @@ import {
   Image,
   List,
   Appear,
-  Slide as BaseSlide
+  Slide as BaseSlide,
+  Quote,
+  Cite
 } from "spectacle";
 import CodeSlide from "spectacle-code-slide";
 
@@ -24,6 +26,7 @@ import Flex from "./components/flex";
 import RoundedImage from "./components/roundedImage";
 import Annotation from "./components/annotation";
 import HighlightedText from "./components/highlighted_text";
+import BlockQuote from "./components/blockquote";
 
 import Topo from "./static/topography.svg";
 import ReasonLogo from "./static/reason.png";
@@ -42,7 +45,9 @@ import ElmLogo from "./static/elm_logo.png";
 import SvelteLogo from "./static/svelte_logo.png";
 import ReasonDiscord from "./static/reason_discord.png";
 import JavaScriptLogo from "./static/javascript_logo.png";
-import OCamlLogo from "./static/ocaml.png";
+import OCamlLogo from "./static/ocaml_logo.jpeg";
+import OCamlLogoLong from "./static/ocaml.png";
+import FlowLogo from "./static/flow_logo.png";
 import ReasonOCamlConnection from "./static/reason_ocaml_connection.svg";
 import GettingHelp from "./static/getting_help.png";
 import BuckleScriptLogo from "./static/bucklescript.png";
@@ -73,6 +78,8 @@ const Collatz = require("./code/collatz.example");
 const CollatzCompiled = require("./code/collatz_compiled.example");
 const TypeScriptInference = require("./code/typescript_inference.example");
 const ReasonInference = require("./code/reason_inference.example");
+const WonkaReason = require("./code/wonka_reason.example");
+const WonkaTypescript = require("./code/wonka_typescript.example");
 
 const theme = createTheme(
   {
@@ -309,7 +316,7 @@ const Presentation = () => {
           <Appear>
             <div>
               <Text>is just a syntax for</Text>
-              <Image src={OCamlLogo} height={125} style={{ margin: 20 }} />
+              <Image src={OCamlLogoLong} height={125} style={{ margin: 20 }} />
             </div>
           </Appear>
           <Appear>
@@ -407,7 +414,7 @@ const Presentation = () => {
       </BaseSlide>
       <CodeSlide
         code={TypeScriptInference}
-        lang="ts"
+        lang="js"
         ranges={[
           { loc: [0, 1], title: "Identity Function" },
           { loc: [1, 2], title: "Inferred As" },
@@ -419,7 +426,7 @@ const Presentation = () => {
       />
       <CodeSlide
         code={ReasonInference}
-        lang="reason"
+        lang="js"
         ranges={[
           { loc: [0, 1], title: "Identity Function" },
           { loc: [1, 2], title: "Inferred As" },
@@ -498,7 +505,77 @@ const Presentation = () => {
           </Flex.FlexHorizontalBetween>
         </Layout>
       </Slide>
+      <Slide>
+        <Layout>
+          <BlockQuote>
+            <Quote>
+              A lightweight iterable and observable library loosely based on the
+              callbag spec.
+            </Quote>
+            <Cite>
+              <Code>Wonka</Code> docs
+            </Cite>
+          </BlockQuote>
+        </Layout>
+      </Slide>
+      <BaseSlide bgImage={Topo}>
+        <Layout>
+          <Flex.FlexVerticalEvenly style={{ height: "100%" }}>
+            <Flex.FlexHorizontalEvenly style={{ width: "100%" }}>
+              <Image src={ReasonLogo} height={100} />
+              <Appear>
+                <Image src={OCamlLogo} height={100} />
+              </Appear>
+              <Appear>
+                <Image src={TypeScriptLogo} height={100} />
+              </Appear>
+              <Appear>
+                <Image src={FlowLogo} height={100} />
+              </Appear>
+              <Appear>
+                <Image src={JavaScriptLogo} height={100} />
+              </Appear>
+            </Flex.FlexHorizontalEvenly>
+            <Appear>
+              <Text>All from a single source!</Text>
+            </Appear>
+          </Flex.FlexVerticalEvenly>
+        </Layout>
+      </BaseSlide>
       <CodeSlide
+        code={WonkaReason}
+        lang="js"
+        ranges={[
+          { loc: [0, 1], title: "Bring module into scope" },
+          { loc: [2, 3], title: "Create a source" },
+          { loc: [3, 4], title: "Accumulate with scan operator" },
+          { loc: [4, 5], title: "Delay by 100ms" },
+          { loc: [5, 6], title: "Print 1 to console" },
+          { loc: [4, 5], title: "Delay by 100ms" },
+          { loc: [5, 6], title: "Print 3 to console" },
+          { loc: [4, 5], title: "Delay by 100ms" },
+          { loc: [5, 6], title: "Print 6 to console" },
+          { loc: [7, 8], title: "Until it completes" }
+        ]}
+      />
+      <CodeSlide
+        code={WonkaTypescript}
+        lang="js"
+        ranges={[
+          { loc: [0, 1], title: "Import dependencies" },
+          { loc: [2, 3], title: "Use the pipe operator" },
+          { loc: [3, 4], title: "Create a source" },
+          { loc: [4, 5], title: "Accumulate with scan operator" },
+          { loc: [5, 6], title: "Delay by 100ms" },
+          { loc: [6, 7], title: "Print 1 to console" },
+          { loc: [5, 6], title: "Delay by 100ms" },
+          { loc: [6, 7], title: "Print 3 to console" },
+          { loc: [5, 6], title: "Delay by 100ms" },
+          { loc: [6, 7], title: "Print 6 to console" },
+          { loc: [9, 10], title: "Until it completes" }
+        ]}
+      />
+      {/* <CodeSlide
         code={Collatz}
         lang="reason"
         ranges={[
@@ -516,7 +593,7 @@ const Presentation = () => {
           { loc: [18, 21], title: "Recursive Case" },
           { loc: [24, 26], title: "Metadata on Exports" }
         ]}
-      />
+      /> */}
       <Slide>
         <Layout>Reprocessing Demo</Layout>
       </Slide>

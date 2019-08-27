@@ -7,8 +7,8 @@ import FormidableText from "../static/formidable_text.svg";
 
 const Formidable = () => (
   <Flex.FlexHorizontalEvenly>
-    <Image src={FormidableLogo} height={300} />
-    <Image src={FormidableText} height={150} />
+    <Image src={FormidableLogo} height={150} />
+    <Image src={FormidableText} height={100} />
   </Flex.FlexHorizontalEvenly>
 );
 
