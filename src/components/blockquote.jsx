@@ -7,6 +7,7 @@ const BlockQuote = styled(BaseBlockQuote)`
     color: black !important;
     border-left: 5px solid #7b16ff;
     margin-bottom: 2rem;
+    line-height: 1.5;
   }
 
   cite {

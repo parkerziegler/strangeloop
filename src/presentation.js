@@ -11,7 +11,8 @@ import {
   Appear,
   Slide as BaseSlide,
   Quote,
-  Cite
+  Cite,
+  Notes
 } from "spectacle";
 import CodeSlide from "spectacle-code-slide";
 
@@ -60,6 +61,9 @@ import ReasonDocs from "./static/reason_docs.png";
 import ReasonBascis from "./static/reason_basics.png";
 import TypeScriptBullshit from "./static/typescript_bullshit.png";
 import Wonka from "./static/wonka.svg";
+import ReprocessingDemo from "./static/reprocessing_demo.gif";
+import PerlinNoise from "./static/perlin_noise.png";
+import Gravitron from "./static/gravitron.gif";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -98,12 +102,61 @@ const Presentation = () => {
   return (
     <Deck theme={theme} transition={["slide"]} transitionDuration={500}>
       <Slide>
+        <Notes>
+          Good afternoon folks, thanks for sticking around today. What an
+          awesome day of talks it's been – I'm so energized by this community
+          and the knowledge that's being shared here. So the title of my talk
+          this afternoon is "Towards an Open, Reason(ML)able Web." The idea for
+          this talk comes out of two of my passions – making the web more
+          accessible to new developers, and a fairly new programming language
+          called ReasonML.
+        </Notes>
         <Layout style={{ justifyContent: "space-evenly" }}>
           <Heading size={4}>Towards an Open, Reason(ML)able Web</Heading>
           <StrangeLoop />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          Now before we begin, let's be honest with one another. - It's 4:30pm.
+        </Notes>
+        <Layout>
+          <Heading size={5}>Let's Be Honest</Heading>
+          <Appear>
+            <Text>It's 4:30pm.</Text>
+          </Appear>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Notes>
+          You may be hitting that hour when your eyes are getting a little
+          heavy. - Maybe you're thinking of upcoming celebrations with new
+          friends from the conference today. - Maybe you're still here for this
+          last session, and ready to learn something new. - Well, I thought
+          about this and I decided:
+        </Notes>
+        <Layout>
+          <Flex.FlexHorizontalEvenly
+            style={{ width: "100%", fontSize: "5rem" }}
+          >
+            <span role="img" aria-labelledby="Nap">
+              💤
+            </span>
+            <Appear>
+              <span role="img" aria-labelledby="Celebrating">
+                🍻
+              </span>
+            </Appear>
+            <Appear>
+              <span role="img" aria-labelledby="Brain">
+                🧠
+              </span>
+            </Appear>
+          </Flex.FlexHorizontalEvenly>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Notes>To make this talk a story.</Notes>
         <Layout>
           <Heading size={4}>
             This talk is really a <HighlightedText>story</HighlightedText>.
@@ -111,6 +164,10 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          It's a story about a language and the community that formed around
+          that language.
+        </Notes>
         <Layout>
           <Heading size={5}>
             It's a story about a <HighlightedText>language</HighlightedText> and
@@ -120,6 +177,11 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          It's a story about the future of the web, and how I think Reason, or
+          something like it, can give us insight into what that future looks
+          like.
+        </Notes>
         <Layout>
           <Heading size={5}>
             It's a story about the <HighlightedText>future</HighlightedText> of
@@ -128,6 +190,10 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          And it's a story about how we create cultures around open source in
+          new programming communities.
+        </Notes>
         <Layout>
           <Heading size={5}>
             It's a story about how we create{" "}
@@ -136,6 +202,7 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes></Notes>
         <Layout style={{ justifyContent: "space-evenly" }}>
           <Profile src={ParkieDoo} />
           <Heading size={6}>Software Engineer at Formidable</Heading>
@@ -152,11 +219,11 @@ const Presentation = () => {
           <RoundedImage src={FormidableLocales} />
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
         <Layout>
           <OSS />
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
         <Layout>
           <RoundedImage src={FormidableOSS} />
@@ -500,7 +567,7 @@ const Presentation = () => {
       <Slide>
         <Layout>
           <Flex.FlexHorizontalBetween style={{ width: "100%" }}>
-            <Code style={{ fontSize: "4rem" }}>Wonka</Code>
+            <Code style={{ fontSize: "4rem" }}>wonka</Code>
             <Image src={Wonka} height={350} />
           </Flex.FlexHorizontalBetween>
         </Layout>
@@ -513,7 +580,7 @@ const Presentation = () => {
               callbag spec.
             </Quote>
             <Cite>
-              <Code>Wonka</Code> docs
+              <Code>wonka</Code> Docs
             </Cite>
           </BlockQuote>
         </Layout>
@@ -527,13 +594,13 @@ const Presentation = () => {
                 <Image src={OCamlLogo} height={100} />
               </Appear>
               <Appear>
+                <Image src={JavaScriptLogo} height={100} />
+              </Appear>
+              <Appear>
                 <Image src={TypeScriptLogo} height={100} />
               </Appear>
               <Appear>
                 <Image src={FlowLogo} height={100} />
-              </Appear>
-              <Appear>
-                <Image src={JavaScriptLogo} height={100} />
               </Appear>
             </Flex.FlexHorizontalEvenly>
             <Appear>
@@ -542,6 +609,24 @@ const Presentation = () => {
           </Flex.FlexVerticalEvenly>
         </Layout>
       </BaseSlide>
+      <Slide>
+        <Layout>
+          <Text>
+            Cross Platform <b>Apps</b>
+          </Text>
+          <Appear>
+            <Text>
+              Cross Platform{" "}
+              <span style={{ textDecoration: "line-through" }}>
+                <b>Apps</b>
+              </span>{" "}
+              <b>
+                <i>Libraries</i>
+              </b>
+            </Text>
+          </Appear>
+        </Layout>
+      </Slide>
       <CodeSlide
         code={WonkaReason}
         lang="js"
@@ -575,6 +660,55 @@ const Presentation = () => {
           { loc: [9, 10], title: "Until it completes" }
         ]}
       />
+      <Slide>
+        <Layout>
+          <Code style={{ fontSize: "3rem", marginBottom: 30 }}>
+            reprocessing
+          </Code>
+          <Flex.FlexHorizontalBetween style={{ width: "100%" }}>
+            <RoundedImage
+              src={PerlinNoise}
+              height={300}
+              style={{
+                marginRight: 30,
+                boxShadow:
+                  "10px 10px 15px -10px rgba(34,34,34,0.5), -10px -10px 15px -10px rgba(34,34,34,0.5)"
+              }}
+            />
+            <RoundedImage
+              src={Gravitron}
+              height={300}
+              style={{
+                boxShadow:
+                  "10px 10px 15px -10px rgba(34,34,34,0.5), -10px -10px 15px -10px rgba(34,34,34,0.5)"
+              }}
+            />
+          </Flex.FlexHorizontalBetween>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Layout>
+          <BlockQuote>
+            <Quote>
+              A high-level drawing library, inspired by Processing, allowing you
+              to write code that'll run on the web (using WebGL) and natively
+              (using OpenGL).
+            </Quote>
+            <Cite>
+              <Code>reprocessing</Code> Docs
+            </Cite>
+          </BlockQuote>
+        </Layout>
+      </Slide>
+      <BaseSlide>
+        <RoundedImage
+          src={ReprocessingDemo}
+          style={{
+            boxShadow:
+              "10px 10px 15px -10px rgba(34,34,34,0.5), -10px -10px 15px -10px rgba(34,34,34,0.5)"
+          }}
+        />
+      </BaseSlide>
       {/* <CodeSlide
         code={Collatz}
         lang="reason"
@@ -594,9 +728,6 @@ const Presentation = () => {
           { loc: [24, 26], title: "Metadata on Exports" }
         ]}
       /> */}
-      <Slide>
-        <Layout>Reprocessing Demo</Layout>
-      </Slide>
     </Deck>
   );
 };
