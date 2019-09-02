@@ -28,6 +28,7 @@ import RoundedImage from "./components/roundedImage";
 import Annotation from "./components/annotation";
 import HighlightedText from "./components/highlighted_text";
 import BlockQuote from "./components/blockquote";
+import Note from "./components/notes";
 
 import Topo from "./static/topography.svg";
 import ReasonLogo from "./static/reason.png";
@@ -100,16 +101,18 @@ const theme = createTheme(
 
 const Presentation = () => {
   return (
-    <Deck theme={theme} transition={["slide"]} transitionDuration={500}>
+    <Deck theme={theme} transition={["slide"]} transitionDuration={300}>
       <Slide>
         <Notes>
-          Good afternoon folks, thanks for sticking around today. What an
+          <Note
+            main={`Good afternoon folks, thanks for sticking around today. What an
           awesome day of talks it's been – I'm so energized by this community
           and the knowledge that's being shared here. So the title of my talk
           this afternoon is "Towards an Open, Reason(ML)able Web." The idea for
           this talk comes out of two of my passions – making the web more
           accessible to new developers, and a fairly new programming language
-          called ReasonML.
+          called ReasonML.`}
+          />
         </Notes>
         <Layout style={{ justifyContent: "space-evenly" }}>
           <Heading size={4}>Towards an Open, Reason(ML)able Web</Heading>
@@ -118,7 +121,10 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <Notes>
-          Now before we begin, let's be honest with one another. - It's 4:30pm.
+          <Note
+            main={`Now before we begin, let's be honest with one another.`}
+            points={[`It's 4:30pm.`]}
+          />
         </Notes>
         <Layout>
           <Heading size={5}>Let's Be Honest</Heading>
@@ -129,11 +135,17 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <Notes>
-          You may be hitting that hour when your eyes are getting a little
-          heavy. - Maybe you're thinking of upcoming celebrations with new
-          friends from the conference today. - Maybe you're still here for this
-          last session, and ready to learn something new. - Well, I thought
-          about this and I decided:
+          <Note
+            main={`You may be hitting that hour when your eyes are getting a little
+          heavy.`}
+            points={[
+              `Maybe you're thinking of upcoming celebrations with new friends
+              from the conference today.`,
+              `Maybe you're still here for this last session, and ready to learn
+              something new.`,
+              "Well, I thought about this and I decided:"
+            ]}
+          />
         </Notes>
         <Layout>
           <Flex.FlexHorizontalEvenly
@@ -156,7 +168,9 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
-        <Notes>To make this talk a story.</Notes>
+        <Notes>
+          <Note main="To make this talk a story." />
+        </Notes>
         <Layout>
           <Heading size={4}>
             This talk is really a <HighlightedText>story</HighlightedText>.
@@ -165,8 +179,10 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <Notes>
-          It's a story about a language and the community that formed around
-          that language.
+          <Note
+            main={`It's a story about a language and the community that formed around
+          that language.`}
+          />
         </Notes>
         <Layout>
           <Heading size={5}>
@@ -178,9 +194,11 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <Notes>
-          It's a story about the future of the web, and how I think Reason, or
+          <Note
+            main={`It's a story about the future of the web, and how I think Reason, or
           something like it, can give us insight into what that future looks
-          like.
+          like.`}
+          />
         </Notes>
         <Layout>
           <Heading size={5}>
@@ -191,8 +209,10 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <Notes>
-          And it's a story about how we create cultures around open source in
-          new programming communities.
+          <Note
+            main={`And it's a story about how we create cultures around open source in
+          new programming communities.`}
+          />
         </Notes>
         <Layout>
           <Heading size={5}>
@@ -202,7 +222,15 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
-        <Notes></Notes>
+        <Notes>
+          <Note
+            main={`Now, before we get too deep into this story, I should tell you a
+          little bit about who your storyteller is.`}
+            points={[
+              `So my name is Parker and I'm a software engineer at Formidable.`
+            ]}
+          />
+        </Notes>
         <Layout style={{ justifyContent: "space-evenly" }}>
           <Profile src={ParkieDoo} />
           <Heading size={6}>Software Engineer at Formidable</Heading>
@@ -210,59 +238,173 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`For those of you who don't know Formidable, we're a JavaScript
+          consultancy who embeds directly with teams to help them level up.`}
+          />
+        </Notes>
         <Layout>
           <Formidable />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`We're based in Seattle and have offices in London, Denver, and
+          Phoenix. In addition to our consulting practice, we have a heavy focus
+          on open source and shaping the future of the web.`}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={FormidableLocales} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`You may have heard of some of our open source projects like`}
+            points={[
+              `Spectacle – a presentation library for React, and actually what
+              this talk uses.`,
+              `Victory – a data visualization library for React.`,
+              `We also recently launched v1 of urql, a GraphQL client for React.`,
+              `And runpkg, an online explorer for packages on the npm registry.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <OSS />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`We love open source at Formidable, and it's a big part of our identity
+          and who we are as a culture. As part of doing a lot of open source,
+          we're also continually involved in discussions with the broader web
+          community about where the web is going from a technical perspective.`}
+            points={[
+              `In fact, every year we gather the Formidable team from across the
+              world to engage in a week of technical discussion around where we
+              see the web going.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={FormidableOSS} />
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`During this time we're asking questions of one another based on our
+          experiences working in open source and across a lot of different
+          client teams around the world. We ask questions like:`}
+            points={[
+              `
+              Where is the web going in the next year? What about in the next
+              five?`,
+              `How do we want to be involved in that transformation?`,
+              `How can we support other developers in that process?`
+            ]}
+          />
+        </Notes>
         <Layout>
           <List>
-            <ListItem>Where is the web going in the next year?</ListItem>
-            <Appear>
-              <ListItem>What about in the next five?</ListItem>
-            </Appear>
+            <ListItem>
+              Where is the web going in the next year? The next five?
+            </ListItem>
             <Appear>
               <ListItem>
                 How do we want to be involved in that transformation?
               </ListItem>
             </Appear>
+            <Appear>
+              <ListItem>
+                How can we support other developers in that process?
+              </ListItem>
+            </Appear>
           </List>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`So let me take you back to early 2018, my first time engaging in this
+          discussion with my colleagues at Formidable. We were talking about the
+          changes we were starting to see in the client projects we'd gotten and
+          the OSS libraries we contributed to, and we were starting to see two
+          patterns emerge.`}
+          />
+        </Notes>
         <Layout>
           <Heading size={2}>Early 2018</Heading>
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Static typing, and specifically TypeScript, was eating the web.`}
+            points={[
+              `Teams were latching onto this idea that having a compile time type
+              checking step could help eliminate bugs from their web
+              applications.`,
+              `
+              TypeScript had also matured, and its features were considerably
+              more advanced than they had been even a year earlier.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={4}>Static Typing</Heading>
           <Image src={TypeScriptLogo} height={175} style={{ margin: 20 }} />
-          <Text>was eating the world.</Text>
+          <Text>was eating the web.</Text>
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`The State of JS survey that had just come out recently really bore
+          this out. Not only had TypeScript grown majorly in adoption, but so
+          had another static type checking tool, Flow.`}
+            points={[
+              `
+              There was also a lot of interest in learning TypeScript among
+              teams that hadn't yet adopted it.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={StateOfJS2017} />
           <Annotation>From the State of JS 2017</Annotation>
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`Now very honestly, this surprised me. I had worked for a company that
+          was a very early adopter of TypeScript. We had used it back in the
+          v1.4 days, when there was very little community support around it.`}
+            points={[
+              `
+              Type inference was terrible and our team wasn't disciplined about
+              types.`,
+              `
+              Type definitions were distributed via a tool called typings,
+              which was a precursor to @types and the DefinitelyTyped repo.
+          The definitions were often wrong, which forced you to litter your
+          codebase with @ts-ignore.`,
+              `
+              The result was that we ended up with a codebase that was using
+              "anyscript", an illusion of static typing.`,
+              `
+              And compilation times were incredibly slow. TypeScript would run
+              full typechecking on your app on every rebuild, which would result
+              in 10-15 seconds hot reload your app.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={Thonkilicious} height={75} />
           <List>
@@ -289,8 +431,22 @@ const Presentation = () => {
             </Appear>
           </List>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Nevertheless, that experience had still really opened my mind to the
+          power of static typing. As someone who had only ever programmed in
+          JavaScript up until that point, I was used to the somewhat quirky,
+          cavalier nature of dynamically typed languages. But working with a
+          type system did really help me start to see the bugs in my code.`}
+            points={[
+              `
+              Complex logic spread across multiple files now became linked, and
+              my ability to read and review code improved as a result.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={5}>
             Using a <HighlightedText>type system</HighlightedText> can
@@ -670,19 +826,10 @@ const Presentation = () => {
               src={PerlinNoise}
               height={300}
               style={{
-                marginRight: 30,
-                boxShadow:
-                  "10px 10px 15px -10px rgba(34,34,34,0.5), -10px -10px 15px -10px rgba(34,34,34,0.5)"
+                marginRight: 30
               }}
             />
-            <RoundedImage
-              src={Gravitron}
-              height={300}
-              style={{
-                boxShadow:
-                  "10px 10px 15px -10px rgba(34,34,34,0.5), -10px -10px 15px -10px rgba(34,34,34,0.5)"
-              }}
-            />
+            <RoundedImage src={Gravitron} height={300} />
           </Flex.FlexHorizontalBetween>
         </Layout>
       </Slide>
