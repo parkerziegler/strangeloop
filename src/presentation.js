@@ -30,7 +30,6 @@ import HighlightedText from "./components/highlighted_text";
 import BlockQuote from "./components/blockquote";
 import Note from "./components/notes";
 
-import Topo from "./static/topography.svg";
 import ReasonLogo from "./static/reason.png";
 import ReasonLogoLong from "./static/reason_logo_long.svg";
 import ParkieDoo from "./static/ziegler_parker_portrait_3.jpg";
@@ -59,7 +58,7 @@ import ReasonBikesheddingResponse from "./static/reason_bikeshedding_response.pn
 import GitHubSocial from "./static/github_social.jpg";
 import DiscordLogo from "./static/discord_logo.png";
 import ReasonDocs from "./static/reason_docs.png";
-import ReasonBascis from "./static/reason_basics.png";
+import ReasonBasics from "./static/reason_basics.png";
 import TypeScriptBullshit from "./static/typescript_bullshit.png";
 import Wonka from "./static/wonka.svg";
 import ReprocessingDemo from "./static/reprocessing_demo.gif";
@@ -79,8 +78,6 @@ require("prismjs");
 require("prismjs/components/prism-typescript");
 require("prismjs/components/prism-reason");
 require("prismjs/components/prism-markup-templating");
-const Collatz = require("./code/collatz.example");
-const CollatzCompiled = require("./code/collatz_compiled.example");
 const TypeScriptInference = require("./code/typescript_inference.example");
 const ReasonInference = require("./code/reason_inference.example");
 const WonkaReason = require("./code/wonka_reason.example");
@@ -456,12 +453,28 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`And of course, I wasn't alone. Almost every team we were working
+              with at Formidable was adopting static typing of some kind.
+              Now interestingly, folks seemed to be overwhelmingly going for TypeScript
+              rather than Flow.`}
+            points={[
+              `And I thought, ok, this makes sense. We have a major corporation in Microsoft backing this project, and for a lot of teams that gives them a sense of comfort.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={TypeScriptPer} />
           <Image src={TypeScriptKen} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Now, the second trend that came out of this meeting was a broader discussion about compilation to JavaScript. All of us at Formidable were curious about these new languages, frameworks, and web standards coming out. It seemed like all the cool kids were taking the stance that you shouldn't write your JS by hand anymore. You should write your source code in a different language and compile it to JS.`}
+          />
+        </Notes>
         <Layout>
           <Heading size={5}>
             No one wanted to <HighlightedText>write</HighlightedText> JS. <br />
@@ -472,7 +485,12 @@ const Presentation = () => {
           </Heading>
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`The WebAssembly standard was starting to crystallize and people were getting excited to play with it. Elm was getting hot amidst the move to static typing. The first prototypes of Svelte had come out.`}
+          />
+        </Notes>
         <Layout>
           <Flex.FlexHorizontalEvenly>
             <Image src={WASMLogo} height={150} style={{ margin: 20 }} />
@@ -484,8 +502,13 @@ const Presentation = () => {
             </Appear>
           </Flex.FlexHorizontalEvenly>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`It kind of felt like hype trains were leaving the station in every direction, and I wanted to be a part of it.`}
+          />
+        </Notes>
         <Layout>
           <Heading size={4}>
             <span role="img" aria-labelledby="Hype Train">
@@ -496,7 +519,17 @@ const Presentation = () => {
           <Text>(your respective hype trains)</Text>
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`One of the last things we discussed that day was a little known language called ReasonML, whose promise was a little different from everything else.`}
+            points={[
+              `Reason promised a supercharged type system, with 100% sound type inference.`,
+              `It also highlighted blazing fast compilation times (ms rebuilds). For someone coming from TypeScript projects that were regularly taking seconds to recompile, this was particularly alluring.`,
+              `It also advertised that could target both the web and native from a single source.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={ReasonLogo} height={150} />
           <List>
@@ -532,8 +565,16 @@ const Presentation = () => {
             </Appear>
           </List>
         </Layout>
-      </BaseSlide>
-      <BaseSlide bgImage={Topo}>
+      </Slide>
+      <Slide>
+        <Notes>
+          <Note
+            main={`What probably surprised me the most, however, was that Reason wasn't necessarily a new technology. In fact, after a bit of light research, I found it that, at it's most basic, it was just a syntax for a language called OCaml, which had been around since 1996.`}
+            points={[
+              `I read that OCaml allowed for syntactic extensions to the language, and the Reason team had taken advantage of this to create a syntax that looked like JavaScript.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={ReasonLogoLong} height={125} style={{ margin: 20 }} />
           <Appear>
@@ -556,8 +597,17 @@ const Presentation = () => {
             </Flex.FlexHorizontal>
           </Appear>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Now, to give you all a better sense of what this looks like, let's take look at a simple diagram from Axel Rauschmayer's blog. His blog is sort of the seminal first text on the language, and many people encounter this diagram early on.`}
+            points={[
+              `You can see that Reason branches off at an early stage from OCaml in the compilation process. It's just a syntax, and it gets parsed into an OCaml.`,
+              `Once we have the AST in place, different backends (compilers) can take effect and compile your code to your target of choice – bytecode, native code, or JavaScript.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={ReasonOCamlConnection} />
           <Annotation>
@@ -566,31 +616,77 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Reading this, I was kind of shocked. It was like, what's new is actually old.`}
+            points={[
+              `And this actually made me quite excited about Reason – in investing in something based off of time-tested ideas in OCaml, I felt like I was skipping over the worst parts of the hype train ride, namely the leap between what's cool and flashy, and what can actually use in production.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={4}>What's new is actually old.</Heading>
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`And so I started playing with the language. I went home that night, went through the hello world tutorials, and started trying to make things. I got really excited by quality of the compiler errors, so much so that I actually tweeted about it.`}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={ReasonErrorHandling} style={{ height: "75%" }} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`I joined the ReasonML Discord and began to get to know the community.`}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={ReasonDiscord} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`I asked questions and got help, often from core contributors to the language, or even the original authors themselves.`}
+            points={[
+              `What really struck me about this experience is that the language was being actively engineered in the open.`,
+              `Core team members were, in getting the community on board, also seeking their feedback around how to make the syntax friendly, how to translate the best of OCaml's type system into JavaScript, how to empower new users.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <RoundedImage src={GettingHelp} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`In a lot of ways, this was a totally unique experience for me, and for a lot of people.`}
+            points={[
+              `I was used to monolithic companies being monoliths.`,
+              `I was used to having engineering leads and project managers adopt tools because they were stamped by those companies.`,
+              `I was used to not really having much of a voice or a say in how things worked.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={5}>This felt novel.</Heading>
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`Now, in embracing a more open practice in the design of the language, the Reason team was also subject to *a lot* of discussion and argument about the best ways to do things.`}
+            points={[
+              `What was particularly interesting is that they were trying to reconcile the OCaml community, a fairly academic leaning one, with elements of the JavaScript community.`,
+              `The syntax was undergoing fast, aggressive, breaking changes; in fact, we're actually on version 3 of the syntax already, and it's only been about 2.5 years since the initial prototypes of the language came out.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={6}>
             <HighlightedText>Design</HighlightedText> vs.{" "}
@@ -603,8 +699,13 @@ const Presentation = () => {
             <RoundedImage src={ReasonBikesheddingResponse} />
           </Appear>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Meanwhile, other projects were sprouting up to accompany the language. The most notable of these was BuckleScript, developed by Hongbo Zhang at Bloomberg.`}
+          />
+        </Notes>
         <Layout>
           <RoundedImage
             src={BuckleScriptLogo}
@@ -613,7 +714,12 @@ const Presentation = () => {
           />
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`BuckleScript is a compiler for OCaml and Reason that produces highly optimized JavaScript. Because it uses OCaml's type system to inform the compilation step, it not only guarantees 100% percent type soundness, but it can also make optimizations to the output JavaScript that aren't possible in TypeScript.`}
+          />
+        </Notes>
         <Layout>
           <Image src={BuckleScriptLogoSmall} height={75} />
           <List>
@@ -634,7 +740,7 @@ const Presentation = () => {
             </Appear>
           </List>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <CodeSlide
         code={TypeScriptInference}
         lang="js"
@@ -659,7 +765,17 @@ const Presentation = () => {
           { loc: [7, 8], title: "Inferred As" }
         ]}
       />
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`When I first realized this, I was really blown away.`}
+            points={[
+              `I thought back to my team that had been doomed to "AnyScript" and pondered how different things could've been had we had this tooling then.`,
+              `And I thought a lot about teams I was meeting now who were accepting TypeScript because it was the "safe" choice.`,
+              `And I thought about how * I * wanted to write code.I missed the fluidity and dynamism of just writing JavaScript, but I wanted the soundness and safety that a real type system could give me.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Heading size={4}>
             <span role="img" aria-labelledby="Mind Blown">
@@ -673,8 +789,17 @@ const Presentation = () => {
             </Text>
           </Appear>
         </Layout>
-      </BaseSlide>
-      <BaseSlide bgImage={Topo}>
+      </Slide>
+      <Slide>
+        <Notes>
+          <Note
+            main={`And so, I started talking to people about Reason.`}
+            points={[
+              `I was working for a client who had some interest in it. They were too worried about getting their team spun up in time to be productive and make a product that could make them money.`,
+              `I tried getting Formidable to discuss Reason more internally, and to begin learning it. But I was met with resistance that, as long clients weren't using it, it wasn't really worth the investment.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Text style={{ textAlign: "left" }}>
             <span role="img" aria-labelledby="Speak">
@@ -691,13 +816,30 @@ const Presentation = () => {
             </Text>
           </Appear>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`So I turned back to the community that had gotten me into programming in the first place – the open source community.`}
+            points={[
+              `As a self - taught programmer, I've learned most of what I know by reading and studying other people's code.Open source has been the single most important factor in my professional education, and it's why I turned to this community to continue my exploration of Reason.`,
+              `As part of this process, I try to create resources in the process of my own learning that can help others.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={GitHubSocial} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Now, I quickly came to realize that there was a flip side to how the Reason community was embracing open source development of the language and the supporting ecosystem – consistent, up-to-date documentation and clear guidance on best practices was mostly absent.`}
+            points={[
+              `Beyond Discord and the official docs, there wasn't much out there. Folks recommended reading the OCaml documentation, but as someone without a deep theoretical background in computer science I quickly found it too cumbersome to be of much use.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Flex.FlexHorizontalEvenly>
             <Image src={DiscordLogo} height={175} style={{ margin: 40 }} />
@@ -711,16 +853,39 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Initially, much of my learning happened by trial and error.`}
+            points={[
+              `For example, I created a repo called reason-basics that went a bit beyond what the official docs showed. Most of what I uncovered in this process just involved using the guidance of the BuckleScript compiler to achieve the results I wanted.`,
+              `What was pretty amazing was that this approach kind of "just worked". Once my code compiled, it almost always did what I expected.`
+            ]}
+          />
+        </Notes>
         <Layout>
-          <Image src={ReasonBascis} />
+          <Image src={ReasonBasics} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Meanwhile, I saw a lot of my peers expressing frustration about their experiences with TypeScript. Even seasoned JavaScript developers, were hitting frustrations; Josh's tweet really sums up the feelings of the moment.`}
+            points={[
+              `Meanwhile, Reason's compiler guidance mixed the best elements of being thorough while also being concrete. It made coding with a strong type system approachable and friendly.`,
+              `Around the time of my deeper personal exploration of Reason, some of the first really innovative open source began to come out in the community, and this afforded a lot of opportunities to contribute.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Image src={TypeScriptBullshit} />
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`The first of these projects that I got really interested in was a library called wonka developed by my friend and colleague Phil Pluckthun.`}
+          />
+        </Notes>
         <Layout>
           <Flex.FlexHorizontalBetween style={{ width: "100%" }}>
             <Code style={{ fontSize: "4rem" }}>wonka</Code>
@@ -729,6 +894,14 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`wonka is a lightweight, observable-like library that implements the Callbag spec, which is a bit different than the model used in traditional reactive programming like RxJS.`}
+            points={[
+              `I won't go too deep into the details of how it works, but you can think of it as a lighter-weight, faster version of Rx.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <BlockQuote>
             <Quote>
@@ -741,7 +914,17 @@ const Presentation = () => {
           </BlockQuote>
         </Layout>
       </Slide>
-      <BaseSlide bgImage={Topo}>
+      <Slide>
+        <Notes>
+          <Note
+            main={`What's so innovative about wonka, however, is that because of the way it's written and distributed, it can actually be used in a handful of different environments.`}
+            points={[
+              `Because it's written in Reason, it can be understood by the OCaml compiler and parsed into an OCaml AST. This allows it to compile down to native code or bytecode, just like any other OCaml code.`,
+              `But Phil did a pretty clever thing and wrote it in such a way to maintain consistent behavior when run through the BuckleScript compiler and compiled to JS.`,
+              `By publishing the compiled JS artifacts along with the Reason source, and by providing type definitions for TypeScript and Flow, wonka can be run in codebases using Reason, OCaml, JS, TS, and Flow.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Flex.FlexVerticalEvenly style={{ height: "100%" }}>
             <Flex.FlexHorizontalEvenly style={{ width: "100%" }}>
@@ -764,8 +947,19 @@ const Presentation = () => {
             </Appear>
           </Flex.FlexVerticalEvenly>
         </Layout>
-      </BaseSlide>
+      </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`I think this is extremely novel.`}
+            points={[
+              `We often talk about having cross-platform applications in the software community, but I think we spend less time thinking about cross-compilation and compatibility of library code.`,
+              `It's an extremely powerful idea that, as library authors, as open source authors, we can write our code in a single source language and developers working across a variety of environments attempting to create a variety of user experiences can benefit from it.`,
+              `I helped Phil a bit on this library, mostly writing tests and documentation, and it's been a wonderful library to learn from.`,
+              `Because Reason and JavaScript share a fair amount of syntax overlap, using the API across both languages doesn't look too different. Let's take a look at a simple example.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <Text>
             Cross Platform <b>Apps</b>
@@ -817,6 +1011,11 @@ const Presentation = () => {
         ]}
       />
       <Slide>
+        <Notes>
+          <Note
+            main={`This type of interop between languages is really powerful. We're not just compiling to JavaScript, we're creating an API in Reason that is intuitive, typesafe, and callable from the JavaScript side.`}
+          />
+        </Notes>
         <Layout>
           <Code style={{ fontSize: "3rem", marginBottom: 30 }}>
             reprocessing
@@ -834,6 +1033,15 @@ const Presentation = () => {
         </Layout>
       </Slide>
       <Slide>
+        <Notes>
+          <Note
+            main={`Around the same time that wonka was getting traction, Avery Morin and Ben San Souci were working on a project called Reprocessing, which is a port of the popular Processing language to Reason. This is one of my favorite projects to work with, especially because the source code is so approachable.`}
+            points={[
+              `It allows you to create sophisticated graphics and visualizations, exposing a draw loop that runs continuously as your application runs.`,
+              `People have made some really cool visualizations with it – including things like Perlin noise visualizations and small physics engines for games.`
+            ]}
+          />
+        </Notes>
         <Layout>
           <BlockQuote>
             <Quote>
@@ -856,25 +1064,6 @@ const Presentation = () => {
           }}
         />
       </BaseSlide>
-      {/* <CodeSlide
-        code={Collatz}
-        lang="reason"
-        ranges={[
-          { loc: [0, 1], title: "Recursive Function" },
-          { loc: [1, 7], title: "Pattern Match" }
-        ]}
-      />
-      <CodeSlide
-        code={CollatzCompiled}
-        lang="reason"
-        ranges={[
-          { loc: [0, 4], title: "Metadata and Imports" },
-          { loc: [6, 7], title: "While Loop Recursion" },
-          { loc: [9, 18], title: "Base Case" },
-          { loc: [18, 21], title: "Recursive Case" },
-          { loc: [24, 26], title: "Metadata on Exports" }
-        ]}
-      /> */}
     </Deck>
   );
 };
