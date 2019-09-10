@@ -53,8 +53,6 @@ import ReasonOCamlConnection from "./static/reason_ocaml_connection.svg";
 import GettingHelp from "./static/getting_help.png";
 import BuckleScriptLogo from "./static/bucklescript.png";
 import BuckleScriptLogoSmall from "./static/bucklescript_logo_small.svg";
-import ReasonBikeshedding from "./static/reason_bikeshedding.png";
-import ReasonBikesheddingResponse from "./static/reason_bikeshedding_response.png";
 import GitHubSocial from "./static/github_social.jpg";
 import DiscordLogo from "./static/discord_logo.png";
 import ReasonDocs from "./static/reason_docs.png";
@@ -98,7 +96,7 @@ const theme = createTheme(
 
 const Presentation = () => {
   return (
-    <Deck theme={theme} transition={["slide"]} transitionDuration={300}>
+    <Deck theme={theme} transition={["slide"]} transitionDuration={500}>
       <Slide>
         <Notes>
           <Note
@@ -603,7 +601,7 @@ const Presentation = () => {
           <Note
             main={`Now, to give you all a better sense of what this looks like, let's take look at a simple diagram from Axel Rauschmayer's blog. His blog is sort of the seminal first text on the language, and many people encounter this diagram early on.`}
             points={[
-              `You can see that Reason branches off at an early stage from OCaml in the compilation process. It's just a syntax, and it gets parsed into an OCaml.`,
+              `You can see that Reason branches off at an early stage from OCaml in the compilation process. It's just a syntax, and it gets parsed into an OCaml AST.`,
               `Once we have the AST in place, different backends (compilers) can take effect and compile your code to your target of choice – bytecode, native code, or JavaScript.`
             ]}
           />
@@ -692,12 +690,6 @@ const Presentation = () => {
             <HighlightedText>Design</HighlightedText> vs.{" "}
             <HighlightedText>Bikeshedding</HighlightedText>
           </Heading>
-          <Appear>
-            <RoundedImage src={ReasonBikeshedding} />
-          </Appear>
-          <Appear>
-            <RoundedImage src={ReasonBikesheddingResponse} />
-          </Appear>
         </Layout>
       </Slide>
       <Slide>
@@ -717,7 +709,11 @@ const Presentation = () => {
       <Slide>
         <Notes>
           <Note
-            main={`BuckleScript is a compiler for OCaml and Reason that produces highly optimized JavaScript. Because it uses OCaml's type system to inform the compilation step, it not only guarantees 100% percent type soundness, but it can also make optimizations to the output JavaScript that aren't possible in TypeScript.`}
+            main={`BuckleScript is a compiler for OCaml and Reason that produces highly optimized JavaScript.`}
+            points={[
+              `Because it uses OCaml's type system to inform the compilation step, it can make optimizations to the output JavaScript that aren't possible in TypeScript.`,
+              `It's also unique in that it produces human readable JavaScript – you can actually inspect BuckleScript output and more or less understand what's going on.`
+            ]}
           />
         </Notes>
         <Layout>
@@ -730,15 +726,33 @@ const Presentation = () => {
             </Appear>
             <Appear>
               <ListItem style={{ fontSize: "2rem" }}>
-                Guaranteed type soundness.
+                Compile time optimizations.
               </ListItem>
             </Appear>
             <Appear>
               <ListItem style={{ fontSize: "2rem" }}>
-                Compile time optimizations.
+                Produces human readable JavaScript.
               </ListItem>
             </Appear>
           </List>
+        </Layout>
+      </Slide>
+      <Slide>
+        <Notes>
+          <Note
+            main={`But what's really incredible is that BuckleScript can provide guaranteed type soundness of your Reason code in milliseconds.`}
+            points={[
+              `Inferred types are actually mathematically proven to be correct.`,
+              `Currently, a clean build of 1250 files would compile to JavaScript in 4.2 seconds. And compilation times speed up successively after that because the type checker doesn't need to run over already checked code.`,
+              `We can see the benefits of this through an extremely simple example by comparing some simple TypeScript code to its Reason equivalent.`
+            ]}
+          />
+        </Notes>
+        <Layout>
+          <Heading size={4}>
+            <HighlightedText>Guaranteed type soundness</HighlightedText>
+          </Heading>
+          <Text> in just milliseconds.</Text>
         </Layout>
       </Slide>
       <CodeSlide
