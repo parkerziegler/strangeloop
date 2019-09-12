@@ -6,10 +6,11 @@ import StrangeLoopLogo from "../static/strangeloop.jpg";
 import Flex from "./flex";
 
 const StrangeLoop = () => (
-  <Flex.FlexHorizontalEvenly style={{ width: "100%" }}>
-    <Image src={StrangeLoopLogo} height={100} style={{ margin: 0 }} />
+  <Flex.FlexVerticalEvenly style={{ alignItems: "center" }}>
+    <Image src={StrangeLoopLogo} width={200} style={{ margin: 0 }} />
+    <span>Parker Ziegler</span>
     <span>September 13, 2019</span>
-  </Flex.FlexHorizontalEvenly>
+  </Flex.FlexVerticalEvenly>
 );
 
 export default StrangeLoop;

@@ -1,4 +1,10 @@
-import { pipe, fromArray, scan, delay, subscribe } from 'wonka';
+import {
+  pipe,
+  fromArray,
+  scan,
+  delay,
+  subscribe
+} from 'wonka';
 
 pipe(
   fromArray([1, 2, 3, 4, 5, 6]),
