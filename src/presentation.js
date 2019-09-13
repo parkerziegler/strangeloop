@@ -111,6 +111,12 @@ const Presentation = () => {
         <Layout style={{ justifyContent: "space-evenly" }}>
           <Heading size={4}>Towards an Open, Reason(ML)able Web</Heading>
           <StrangeLoop />
+          <a
+            style={{ fontSize: "1.5rem", marginTop: 10 }}
+            href="https://parkerziegler-strangeloop.netlify.com"
+          >
+            parkerziegler-strangeloop.netlify.com
+          </a>
         </Layout>
       </Slide>
       <Slide>
@@ -508,7 +514,7 @@ const Presentation = () => {
             and all of us at Formidable were excited to see which technologies would stick.`}
             points={[
               `In particular, we were looking for a technology that had potential for
-              larger open source development and a HighlightedText ethos around community involvement.`
+              larger open source development and an ethos around community involvement.`
             ]}
           />
         </Notes>
@@ -1347,11 +1353,11 @@ const Presentation = () => {
           />
         </Notes>
         <Layout>
-          <Heading size={6}>
+          <Heading size={6} style={{ marginBottom: 20 }}>
             What should we value when thinking about how the web will change?
           </Heading>
           <Appear>
-            <Heading size={4}>
+            <Heading size={6}>
               How do we start seeing our programming communities as living,
               breathing organisms?
             </Heading>
